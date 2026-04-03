@@ -1,1 +1,169 @@
-# IZPC
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IZPC</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.logo-img {
+    width: 320px;
+    animation: glowFade 2s ease forwards;
+}
+
+.subtitle {
+    margin-top: 15px;
+    color: #aaa;
+    letter-spacing: 1px;
+    animation: fadeIn 3s ease forwards;
+}
+
+.cta {
+    margin-top: 50px;
+}
+
+button {
+    padding: 15px 35px;
+    font-size: 16px;
+    border: none;
+    background: white;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
+    border-radius: 8px;
+}
+
+button:hover {
+    background: #00f2fe;
+    transform: scale(1.1);
+}
+
+section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.card {
+    display: inline-block;
+    background: #111;
+    padding: 35px;
+    margin: 20px;
+    border-radius: 15px;
+    width: 260px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    background: #222;
+}
+
+footer {
+    text-align: center;
+    padding: 40px;
+    border-top: 1px solid #222;
+}
+
+.footer-logo {
+    width: 120px;
+    opacity: 0.7;
+}
+
+/* 애니메이션 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowFade {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+    }
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(60px);
+    transition: 1s;
+}
+
+.fade-up.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+</style>
+
+</head>
+<body>
+
+<header>
+    <!-- 메인 로고 (1번 이미지) -->
+    <img src="logo.png" class="logo-img">
+
+    <div class="subtitle">IZPC : New Era of Computer</div>
+
+    <div class="cta">
+        <button onclick="scrollToSection()">견적 시작하기</button>
+    </div>
+</header>
+
+<section id="services">
+    <h2 class="fade-up">서비스</h2>
+
+    <div class="card fade-up">💻 맞춤 PC 견적</div>
+    <div class="card fade-up">🛠️ 조립 서비스</div>
+    <div class="card fade-up">🚀 빠른 배송</div>
+</section>
+
+<section>
+    <h2 class="fade-up">왜 IZPC인가?</h2>
+    <p class="fade-up">최고 성능 / 합리적 가격 / 전문가 조립</p>
+</section>
+
+<footer>
+    <!-- 서브 로고 (2번 이미지) -->
+    <img src="logo2.png" class="footer-logo">
+    <p>© 2026 IZPC</p>
+</footer>
+
+<script>
+function scrollToSection() {
+    document.getElementById("services").scrollIntoView({ behavior: "smooth" });
+}
+
+// 스크롤 애니메이션
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+});
+</script>
+
+</body>
+</html>
